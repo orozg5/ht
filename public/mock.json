@@ -1,0 +1,285 @@
+{
+  "status": ["Inicijalizirano", "U tranzitu", "Isporučeno"],
+  "statusChangeReason": ["Naručeno", "Utovareno", "Na putu", "Isporučeno"],
+  "referredType": ["Proizvod", "Usluga", "Paket", "Narudžba", "Promocija"],
+  "carrier": [
+    { "name": "Hrvatska pošta", "url": "https://posiljka.posta.hr/" },
+    { "name": "Overseas Express", "url": "https://is.overseas.hr/tracking" },
+    { "name": "Tisak paket", "url": "https://lokator.tisak.hr/PacketStatusForm.aspx?authToken=tisak" },
+    { "name": "GLS", "url": "https://gls-group.com/HR/hr/pracenje-paketa/" },
+    { "name": "DPD", "url": "https://www.dpd.com/hr/hr/primanje-paketa/parcel-tracking/" }
+  ],
+
+  "orders": [
+    {
+      "id": "8c36c0b7-4f82-4d04-91ad-6211e4d45713",
+      "carrier": "Hrvatska pošta",
+      "trackingCode": "HR123456789",
+      "carrierTrackingUrl": "https://posiljka.posta.hr/HR123456789",
+      "trackingDate": "2024-05-22T13:17:48.570Z",
+      "status": "Inicijalizirano",
+      "statusChangeDate": "2024-05-22T13:17:48.570Z",
+      "statusChangeReason": "Naručeno",
+      "weight": 0.232,
+      "estimatedDeliveryDate": "2024-06-01T13:17:48.570Z",
+      "addressFrom": {
+        "id": "0a8bfc0f-5078-49ad-b8e3-0f10718005c4",
+        "streetNr": "123",
+        "streetName": "Ulica Hrvatskog proljeća",
+        "streetSuffix": "",
+        "postcode": "10000",
+        "city": "Zagreb",
+        "country": "Hrvatska"
+      },
+      "addressTo": {
+        "id": "86f81e27-5c12-42d8-b490-68fb29fd3b15",
+        "streetNr": "456",
+        "streetName": "Ulica Prve Dalmatinske Brigade",
+        "streetSuffix": "",
+        "postcode": "21000",
+        "city": "Split",
+        "country": "Hrvatska"
+      },
+      "order": [
+        {
+          "id": "3d1a4d13-43fd-48b8-b22d-31bb091b0f33",
+          "href": "http://localhost:3000/narudzba/3d1a4d13-43fd-48b8-b22d-31bb091b0f33",
+          "name": "Samsung Galaxy S24 Ultra",
+          "referredType": "Proizvod"
+        }
+      ],
+      "relatedCustomer": {
+        "id": "d9f0f4f3-0522-4867-b5bc-8b0522ff2c29",
+        "href": "http://localhost:3000/korisnik/d9f0f4f3-0522-4867-b5bc-8b0522ff2c29",
+        "name": "Marko Marković",
+        "description": "Privatni kupac"
+      },
+      "createDate": "2024-05-22T13:17:48.570Z"
+    },
+    {
+      "id": "ff5195de-1a48-4ae5-bff4-6487b0417e5b",
+      "carrier": "Hrvatska pošta",
+      "trackingCode": "HR999999789",
+      "carrierTrackingUrl": "https://posiljka.posta.hr/HR999999789",
+      "trackingDate": "2024-05-22T13:17:48.570Z",
+      "status": "Inicijalizirano",
+      "statusChangeDate": "2024-05-22T13:17:48.570Z",
+      "statusChangeReason": "Naručeno",
+      "weight": 0.232,
+      "estimatedDeliveryDate": "2024-06-01T13:17:48.570Z",
+      "addressFrom": {
+        "id": "0a8bfc0f-5078-49ad-b8e3-0f10718005c4",
+        "streetNr": "123",
+        "streetName": "Ulica Hrvatskog proljeća",
+        "streetSuffix": "",
+        "postcode": "10000",
+        "city": "Zagreb",
+        "country": "Hrvatska"
+      },
+      "addressTo": {
+        "id": "0a8bfc0f-5078-49ad-b8e3-0f10718005c4",
+        "streetNr": "123",
+        "streetName": "Ulica Hrvatskog proljeća",
+        "streetSuffix": "",
+        "postcode": "10000",
+        "city": "Zagreb",
+        "country": "Hrvatska"
+      },
+      "order": [
+        {
+          "id": "caa4dc68-9916-4e08-842b-41af19db8dc3",
+          "href": "http://localhost:3000/narudzba/caa4dc68-9916-4e08-842b-41af19db8dc3",
+          "name": "Samsung Galaxy S22",
+          "referredType": "Proizvod"
+        }
+      ],
+      "relatedCustomer": {
+        "id": "d9f0f4f3-0522-4867-b5bc-8b0522ff2c29",
+        "href": "http://localhost:3000/korisnik/d9f0f4f3-0522-4867-b5bc-8b0522ff2c29",
+        "name": "Marko Marković",
+        "description": "Privatni kupac"
+      },
+      "createDate": "2024-05-22T14:17:48.570Z"
+    },
+    {
+      "id": "6d4e8f9a-1b23-5c67-a8de-f9b3e5c6d89e",
+      "carrier": "Overseas Express",
+      "trackingCode": "HR987654321",
+      "carrierTrackingUrl": "https://is.overseas.hr/tracking/HR987654321",
+      "trackingDate": "2024-06-10T14:30:20.500Z",
+      "status": "U tranzitu",
+      "statusChangeDate": "2024-06-10T14:30:20.500Z",
+      "statusChangeReason": "Utovareno",
+      "weight": 0.15,
+      "estimatedDeliveryDate": "2024-07-01T14:30:20.500Z",
+      "addressFrom": {
+        "id": "1a2b3c4d-5678-90ab-cdef-0123456789ab",
+        "streetNr": "789",
+        "streetName": "Avenija Slavonska",
+        "streetSuffix": "",
+        "postcode": "11000",
+        "city": "Osijek",
+        "country": "Hrvatska"
+      },
+      "addressTo": {
+        "id": "45a6b7c8-d9ef-g0h1-i2jk-l3m4n567890",
+        "streetNr": "321",
+        "streetName": "Trg Kralja Tomislava",
+        "streetSuffix": "",
+        "postcode": "20000",
+        "city": "Rijeka",
+        "country": "Hrvatska"
+      },
+      "order": [
+        {
+          "id": "4e5f6g7h-8i9j-k0l1-m2n3-o4p5q6r7s8t",
+          "href": "http://localhost:3000/narudzba/4e5f6g7h-8i9j-k0l1-m2n3-o4p5q6r7s8t",
+          "name": "Xiaomi Redmi Note 11 Pro",
+          "referredType": "Proizvod"
+        }
+      ],
+      "relatedCustomer": {
+        "id": "c98887e8-9fe8-42c6-b805-c717e2e6c8a2",
+        "href": "http://localhost:3000/korisnik/c98887e8-9fe8-42c6-b805-c717e2e6c8a2",
+        "name": "Ana Anić",
+        "description": "Poslovni kupac"
+      },
+      "createDate": "2024-06-10T14:30:20.500Z"
+    },
+    {
+      "id": "7i8j9k0l-1m2n3-o4p5-q6r7-s8t9u0v",
+      "carrier": "GLS",
+      "trackingCode": "HR543210987",
+      "carrierTrackingUrl": "https://gls-group.com/HR/hr/pracenje-paketa/HR543210987",
+      "trackingDate": "2024-07-15T16:45:30.600Z",
+      "status": "Isporučeno",
+      "statusChangeDate": "2024-07-15T16:45:30.600Z",
+      "statusChangeReason": "Isporučeno",
+      "weight": 0.25,
+      "estimatedDeliveryDate": "2024-08-01T16:45:30.600Z",
+      "addressFrom": {
+        "id": "03b00143-08a1-4ee0-90a1-999d15427644",
+        "streetNr": "654",
+        "streetName": "Put Mihaljevačka",
+        "streetSuffix": "",
+        "postcode": "23000",
+        "city": "Šibenik",
+        "country": "Hrvatska"
+      },
+      "addressTo": {
+        "id": "b259d706-118a-40a7-9de9-98440c365860",
+        "streetNr": "234",
+        "streetName": "Aleja Antuna Radića",
+        "streetSuffix": "2. kat",
+        "postcode": "41000",
+        "city": "Čakovec",
+        "country": "Hrvatska"
+      },
+      "order": [
+        {
+          "id": "0a4293a4-19fb-468d-abc7-2f3d03bedb9a",
+          "href": "http://localhost:3000/narudzba/0a4293a4-19fb-468d-abc7-2f3d03bedb9a",
+          "name": "Apple iPhone 13 Pro Max",
+          "referredType": "Proizvod"
+        }
+      ],
+      "relatedCustomer": {
+        "id": "37e86974-6252-420f-bd48-84a899264d55",
+        "href": "http://localhost:3000/korisnik/37e86974-6252-420f-bd48-84a899264d55",
+        "name": "Ivan Ivanović",
+        "description": "Privatni kupac"
+      },
+      "createDate": "2024-07-15T16:45:30.600Z"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6",
+      "carrier": "Tisak paket",
+      "trackingCode": "HR765432109",
+      "carrierTrackingUrl": "https://lokator.tisak.hr/PacketStatusForm.aspx?authToken=tisak&tracking=HR765432109",
+      "trackingDate": "2024-08-20T18:00:40.700Z",
+      "status": "Isporučeno",
+      "statusChangeDate": "2024-08-20T18:00:40.700Z",
+      "statusChangeReason": "Isporučeno",
+      "weight": 0.35,
+      "estimatedDeliveryDate": "2024-09-25T19:15:50.800Z",
+      "addressFrom": {
+        "id": "3ce8876f-1049-4cd8-b028-58cfcab06f2c",
+        "streetNr": "987",
+        "streetName": "Put Dubrovačka",
+        "streetSuffix": "",
+        "postcode": "22000",
+        "city": "Dubrovnik",
+        "country": "Hrvatska"
+      },
+      "addressTo": {
+        "id": "26d996b3-d84b-465b-8188-4e6cadc32d0c",
+        "streetNr": "555",
+        "streetName": "Aleja Petra Krešimira IV.",
+        "streetSuffix": "",
+        "postcode": "10000",
+        "city": "Zagreb",
+        "country": "Hrvatska"
+      },
+      "order": [
+        {
+          "id": "bcb184dd-649f-4a02-97cb-45df749800c7",
+          "href": "http://localhost:3000/narudzba/bcb184dd-649f-4a02-97cb-45df749800c7",
+          "name": "Sony PlayStation 5",
+          "referredType": "Proizvod"
+        }
+      ],
+      "relatedCustomer": {
+        "id": "3e4d33ed-1983-45b2-bc34-fe43f7f6b73d",
+        "href": "http://localhost:3000/korisnik/3e4d33ed-1983-45b2-bc34-fe43f7f6b73d",
+        "name": "Petar Petrović",
+        "description": "Poslovni kupac"
+      },
+      "createDate": "2024-08-20T18:00:40.700Z"
+    },
+    {
+      "id": "b1c2d3e4-f5g6-h7i8-j9k0-l1m2n3o4p5",
+      "carrier": "DPD",
+      "trackingCode": "HR098765432",
+      "carrierTrackingUrl": "https://www.dpd.com/hr/hr/primanje-paketa/parcel-tracking/HR098765432",
+      "trackingDate": "2024-09-25T19:15:50.800Z",
+      "status": "Isporučeno",
+      "statusChangeDate": "2024-09-25T19:15:50.800Z",
+      "statusChangeReason": "Isporučeno",
+      "weight": 0.45,
+      "estimatedDeliveryDate": "2024-10-25T19:15:50.800Z",
+      "addressFrom": {
+        "id": "7286f26e-cfde-4df0-a192-7e7adff5cc7a",
+        "streetNr": "665",
+        "streetName": "Ulica Velebitska",
+        "streetSuffix": "",
+        "postcode": "51000",
+        "city": "Osijek",
+        "country": "Hrvatska"
+      },
+      "addressTo": {
+        "id": "5940bd96-7b1e-4f29-8621-773a0fce345c",
+        "streetNr": "777",
+        "streetName": "Trg bana Jelačića",
+        "streetSuffix": "",
+        "postcode": "10000",
+        "city": "Zagreb",
+        "country": "Hrvatska"
+      },
+      "order": [
+        {
+          "id": "e04a147f-a5ef-478d-87ef-7fefa2dbdb75",
+          "href": "http://localhost:3000/narudzba/e04a147f-a5ef-478d-87ef-7fefa2dbdb75",
+          "name": "Microsoft Surface Laptop 4",
+          "referredType": "Proizvod"
+        }
+      ],
+      "relatedCustomer": {
+        "id": "ce71891b-e86b-4b48-a613-164b6c8bd76a",
+        "href": "http://localhost:3000/korisnik/ce71891b-e86b-4b48-a613-164b6c8bd76a",
+        "name": "Marija Marić",
+        "description": "Privatni kupac"
+      },
+      "createDate": "2024-09-25T19:15:50.800Z"
+    }
+  ]
+}

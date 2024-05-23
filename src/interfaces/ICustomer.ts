@@ -1,5 +1,5 @@
 export default interface ICustomer {
-  id?: string;
+  customerId?: string;
   href?: string;
   name?: string;
   description?: string;

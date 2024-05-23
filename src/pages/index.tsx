@@ -1,11 +1,49 @@
 import Footer from "@/components/shared/Fotter";
 import Header from "@/components/shared/Header";
+import getCarriers from "@/helpers/getCarriers";
+import getEnums from "@/helpers/getEnums";
+import getShipmentTracking from "@/helpers/getShipmentTracking";
+import getShipmentTrackingByStatus from "@/helpers/getShipmentTrackingByStatus";
+import getShipmentTrackingByTrackingId from "@/helpers/getShipmentTrackingByTrackingId";
+import IProps from "@/interfaces/IProps";
+import IShipment from "@/interfaces/IShipment";
+import IShipmentProps from "@/interfaces/IShipmentProps";
+import getStatus from "@/utils/getStatus";
 import { Box, Button, Divider, Flex, Heading, Input, Select, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { GetServerSideProps } from "next";
+import { useEffect, useState } from "react";
 
-export default function Home() {
+export default function Home({ status, carriers }: IShipmentProps) {
+  const [shipment, setShipment] = useState<IShipment[]>([]);
   const [filter, setFilter] = useState(0);
   const [id, setId] = useState("");
+
+  useEffect(() => {
+    const fetchShipmentTracking = async () => {
+      try {
+        if (filter === 0) {
+          const res = await getShipmentTracking(id);
+          if (res.status === 200) {
+            setShipment(res.data);
+          }
+        } else if (filter === 1) {
+          const res = await getShipmentTrackingByStatus(id);
+          if (res.status === 200) {
+            setShipment(res.data);
+          }
+        } else {
+          const res = await getShipmentTrackingByTrackingId(id);
+          if (res.status === 200) {
+            setShipment([res.data]);
+          }
+        }
+      } catch (error) {
+        throw error;
+      }
+    };
+
+    fetchShipmentTracking();
+  }, [id]);
 
   return (
     <>
@@ -110,11 +148,14 @@ export default function Home() {
             placeholder="Odaberite status pošiljke"
             onChange={(e) => setId(e.target.value)}
           >
-            <option value="Inicijalizirano">Inicijalizirano</option>
-            <option value="U tranzitu">U tranzitu</option>
-            <option value="Isporučeno">Isporučeno</option>
-            <option value="Problem s isporukom">Problem s isporukom</option>
-            <option value="Vraćeno">Vraćeno</option>
+            <option value="initialized">Inicijalizirano</option>
+            <option value="inProcess">U tijeku</option>
+            <option value="processed">Obrađeno</option>
+            <option value="shipped">Poslano</option>
+            <option value="inCustoms">Na carini</option>
+            <option value="delivered">Isporučeno</option>
+            <option value="returned">Vraćeno</option>
+            <option value="error">Greška</option>
           </Select>
         )}
         {filter == 2 && (
@@ -129,99 +170,115 @@ export default function Home() {
             onChange={(e) => setId(e.target.value)}
           />
         )}
-        {id && (
-          <Button
-            mt="16px"
-            p="24px"
-            fontSize={{ base: "16px", md: "20px" }}
-            borderRadius="16px"
-            bgColor="#E20074"
-            _hover={{ bgColor: "#D1006C" }}
-            color="white"
-          >
-            Dohvati
-          </Button>
-        )}
 
-        <Flex justify="center" flexWrap="wrap" gap="16px" mt="64px">
-          <Box
-            fontSize={{ base: "16px", md: "20px" }}
-            w="600px"
-            textAlign="center"
-            boxShadow="dark-lg"
-            borderRadius="8px"
-            p="32px"
-          >
-            <Heading color="#E20074">HR123456789</Heading>
-            <Text as="a" href="https://posiljka.posta.hr" _hover={{ color: "#757575" }} fontSize="14px" color="#A4A4A4">
-              https://posiljka.posta.hr
-            </Text>
-
-            <Text>Kreirano: 2024-05-22, 13:17</Text>
-            <Text>Inicijalizirano - Naručeno, 2024-05-22, 13:17</Text>
-
-            <Heading mt="16px" size="lg">
-              Dostavljač
-            </Heading>
-            <Text>Hrvatska pošta</Text>
-            <Text>Procijenjeni datum isporuke: 2024-06-01, 13:17</Text>
-
-            <Heading mt="16px" size="lg">
-              Kupac
-            </Heading>
-            <Text
-              as="a"
-              href="http://localhost:3000/user/d9f0f4f3-0522-4867-b5bc-8b0522ff2c29"
-              _hover={{ color: "#757575" }}
-              fontSize="14px"
-              color="#A4A4A4"
-            >
-              http://localhost:3000/user/d9f0f4f3-0522-4867-b5bc-8b0522ff2c29
-            </Text>
-            <Text>Marko Marković</Text>
-            <Text>Privatni kupac</Text>
-
-            <Heading mt="16px" size="lg">
-              Adresa računa
-            </Heading>
-            <Text>123 Ulica Hrvatskog proljeća, Ulica</Text>
-            <Text>10000 Zagreb, Hrvatska</Text>
-
-            <Heading mt="16px" size="lg">
-              Dostava na
-            </Heading>
-            <Text>456 Ulica Prve Dalmatinske Brigade, Ulica</Text>
-            <Text>21000 Split, Hrvatska</Text>
-
-            <Heading mt="16px" size="lg">
-              Narudžbe
-            </Heading>
-            <Text>Težina: 0.232 kg</Text>
-
-            <Text mt="8px">Samsung Galaxy S24 Ultra</Text>
-            <Text
-              as="a"
-              href="http://localhost:3000/order/3d1a4d13-43fd-48b8-b22d-31bb091b0f33"
-              _hover={{ color: "#757575" }}
-              fontSize="14px"
-              color="#A4A4A4"
-            >
-              http://localhost:3000/order/3d1a4d13-43fd-48b8-b22d-31bb091b0f33
-            </Text>
-            <Text>Proizvod</Text>
-
-            <Button
-              mt="32px"
-              p="24px"
+        <Flex justify="center" flexWrap="wrap" gap="64px" mt="64px">
+          {shipment?.map((s) => (
+            <Box
               fontSize={{ base: "16px", md: "20px" }}
-              borderRadius="16px"
-              bgColor="#E20074"
-              _hover={{ bgColor: "#D1006C" }}
-              color="white"
+              w={{ base: "300px", sm: "432px", md: "600px" }}
+              textAlign="center"
+              boxShadow="dark-lg"
+              borderRadius="8px"
+              p="32px"
             >
-              Uredi
-            </Button>
-          </Box>
+              <Heading color="#E20074">{s.trackingCode}</Heading>
+              <Text
+                as="a"
+                href={s.carrierTrackingUrl}
+                _hover={{ color: "#757575" }}
+                fontSize="14px"
+                color="#A4A4A4"
+              >
+                {s.carrierTrackingUrl}
+              </Text>
+
+              <Text>
+                Kreirano: {s.createDate?.split("T")[0]}, {s.createDate?.split("T")[1]}
+              </Text>
+              <Text>
+                {getStatus(s.status || "")} - {s.statusChangeReason}, {s.statusChangeDate?.split("T")[0]},{" "}
+                {s.statusChangeDate?.split("T")[1]}
+              </Text>
+
+              <Divider mt="16px" />
+
+              <Heading mt="16px" size="lg">
+                Dostavljač
+              </Heading>
+              <Text>{carriers.filter((c) => c.id == s.carrier)[0]?.name}</Text>
+              <Text>
+                Procijenjeni datum isporuke: {s.estimatedDeliveryDate?.split("T")[0]},
+                {s.estimatedDeliveryDate?.split("T")[1]}
+              </Text>
+
+              <Divider mt="16px" />
+
+              <Heading mt="16px" size="lg">
+                Kupac
+              </Heading>
+              <Text as="a" href={s.relatedCustomer?.href} _hover={{ color: "#757575" }} fontSize="14px" color="#A4A4A4">
+                {s.relatedCustomer?.href}
+              </Text>
+              <Text>{s.relatedCustomer?.name}</Text>
+              <Text>{s.relatedCustomer?.description}</Text>
+
+              <Divider mt="16px" />
+
+              <Heading mt="16px" size="lg">
+                Adresa računa
+              </Heading>
+              <Text>
+                {s.addressFrom?.streetName} {s.addressFrom?.streetNr}, {s.addressFrom?.streetSuffix}
+              </Text>
+              <Text>
+                {s.addressFrom?.postcode} {s.addressFrom?.city}, {s.addressFrom?.country}
+              </Text>
+
+              <Heading mt="16px" size="lg">
+                Dostava na
+              </Heading>
+              <Text>
+                {s.addressTo?.streetName} {s.addressTo?.streetNr}, {s.addressTo?.streetSuffix}
+              </Text>
+              <Text>
+                {s.addressTo?.postcode} {s.addressTo?.city}, {s.addressTo?.country}
+              </Text>
+
+              <Divider mt="16px" />
+
+              <Heading mt="16px" size="lg">
+                Narudžbe
+              </Heading>
+              <Text>Težina: {s.weight} kg</Text>
+
+              <Flex mt="8px" direction="column" gap="16px">
+                {s.order?.map((o) => (
+                  <Box border="3px solid #E20074" borderRadius="16px" p="8px">
+                    <Text >{o.name}</Text>
+                    <Text as="a" href={o.href} _hover={{ color: "#757575" }} fontSize="14px" color="#A4A4A4">
+                      {o.href}
+                    </Text>
+                    <Text>{o.referredType}</Text>
+                  </Box>
+                ))}
+              </Flex>
+
+              <Button
+                mt="32px"
+                p="24px"
+                fontSize={{ base: "16px", md: "20px" }}
+                borderRadius="16px"
+                bgColor="#E20074"
+                _hover={{ bgColor: "#D1006C" }}
+                color="white"
+                onClick={() => {
+                  window.location.href = `/UpdateShipment?id=${s.id}`;
+                }}
+              >
+                Uredi
+              </Button>
+            </Box>
+          ))}
         </Flex>
       </Flex>
 
@@ -231,3 +288,15 @@ export default function Home() {
     </>
   );
 }
+export const getServerSideProps: GetServerSideProps<IProps> = async () => {
+  const enums = await getEnums();
+  const { status } = enums;
+  const carriers = await getCarriers();
+
+  return {
+    props: {
+      status,
+      carriers,
+    },
+  };
+};

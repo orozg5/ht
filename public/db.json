@@ -1,0 +1,135 @@
+{
+  "enums": {
+    "status": [
+      "initialized",
+      "inProcess",
+      "processed",
+      "shipped",
+      "inCustoms",
+      "delivered",
+      "returned",
+      "error"
+    ]
+  },
+  "carrier": [
+    {
+      "id": "bb99d075-f6da-4020-a73c-9eb40178de83",
+      "name": "Hrvatska pošta",
+      "url": "https://posiljka.posta.hr/"
+    },
+    {
+      "id": "69c0524d-26e4-4cf0-8553-db4037d98519",
+      "name": "Overseas Express",
+      "url": "https://is.overseas.hr/tracking"
+    },
+    {
+      "id": "98722511-e716-4772-aae2-76d537bca41a",
+      "name": "Tisak paket",
+      "url": "https://lokator.tisak.hr/PacketStatusForm.aspx?authToken=tisak"
+    },
+    {
+      "id": "f20adba4-7e3e-4564-bc24-8edc20dafb0d",
+      "name": "GLS",
+      "url": "https://gls-group.com/HR/hr/pracenje-paketa/"
+    },
+    {
+      "id": "e00c54ce-dfae-4706-9f32-8deb21f26694",
+      "name": "DPD",
+      "url": "https://www.dpd.com/hr/hr/primanje-paketa/parcel-tracking/"
+    }
+  ],
+  "shipmentTracking": [
+    {
+      "id": "ec01479c-e2f6-4f79-a921-a825ea9c759a",
+      "status": "initialized",
+      "statusChangeReason": "Naručeno",
+      "carrier": "bb99d075-f6da-4020-a73c-9eb40178de83",
+      "weight": 0.4,
+      "estimatedDeliveryDate": "2024-06-03T19:25",
+      "addressFrom": {
+        "streetNr": "12",
+        "streetName": "Ulica Hrvatskog proljeća",
+        "streetSuffix": "1. kat",
+        "postcode": "10000",
+        "city": "Zagreb",
+        "country": "Hrvatska"
+      },
+      "addressTo": {
+        "streetName": "Ulica Hrvatskog proljeća",
+        "streetNr": "12",
+        "streetSuffix": "1. kat",
+        "postcode": "10000",
+        "city": "Zagreb",
+        "country": "Hrvatska"
+      },
+      "order": [
+        {
+          "name": "Samsung Galaxy S24 Ultra",
+          "referredType": "Proizvod",
+          "id": "ca1c2922-87ee-4a37-b98e-27f160d45754",
+          "href": "/order/ca1c2922-87ee-4a37-b98e-27f160d45754"
+        },
+        {
+          "name": "Samsung Galaxy S22",
+          "referredType": "Proizvod",
+          "id": "872302fe-821f-4669-9955-618c61501340",
+          "href": "/order/872302fe-821f-4669-9955-618c61501340"
+        }
+      ],
+      "relatedCustomer": {
+        "name": "Gabriela Oroz",
+        "description": "Stalni kupac",
+        "customerId": "4f776744-01ca-4102-a8b8-4446aae45872",
+        "href": "/user/4f776744-01ca-4102-a8b8-4446aae45872"
+      },
+      "trackingCode": "HR8063943801",
+      "carrierTrackingUrl": "https://posiljka.posta.hr/",
+      "trackingDate": "5/23/2024, 7:30:23 PM",
+      "statusChangeDate": "5/23/2024, 7:30:23 PM",
+      "createDate": "5/23/2024, 7:30:23 PM"
+    },
+    {
+      "id": "9a96c500-86e8-4e2c-b1f1-369d384fbb94",
+      "status": "initialized",
+      "statusChangeReason": "Naručeno",
+      "carrier": "98722511-e716-4772-aae2-76d537bca41a",
+      "weight": 0.2,
+      "estimatedDeliveryDate": "2024-06-09T19:44",
+      "addressFrom": {
+        "streetName": "Aleja Petra Krešimira IV.",
+        "postcode": "10000",
+        "city": "Zagreb",
+        "country": "Hrvatska",
+        "streetSuffix": "3. kat",
+        "streetNr": "26"
+      },
+      "addressTo": {
+        "streetName": "Ulica Hrvatskog proljeća",
+        "postcode": "10000",
+        "city": "Zagreb",
+        "country": "Hrvatska",
+        "streetSuffix": "1. kat",
+        "streetNr": "12"
+      },
+      "order": [
+        {
+          "name": "Notebook Asus Vivobook",
+          "referredType": "Proizvod",
+          "id": "3709efa3-b561-4c90-b1f4-3db4aeb8cacb",
+          "href": "/order/3709efa3-b561-4c90-b1f4-3db4aeb8cacb"
+        }
+      ],
+      "relatedCustomer": {
+        "name": "Ana Anić",
+        "description": "Poslovni kupac",
+        "customerId": "a4517f79-0e16-48bd-b98c-c21ff97ae0d5",
+        "href": "/user/a4517f79-0e16-48bd-b98c-c21ff97ae0d5"
+      },
+      "trackingCode": "HR123d84d210",
+      "carrierTrackingUrl": "https://lokator.tisak.hr/PacketStatusForm.aspx?authToken=tisak",
+      "trackingDate": "5/23/2024, 7:46:30 PM",
+      "statusChangeDate": "5/23/2024, 7:46:30 PM",
+      "createDate": "5/23/2024, 7:46:30 PM"
+    }
+  ]
+}

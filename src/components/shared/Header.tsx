@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <Flex h="80px" bgColor="#E20074" align="center">
+    <Flex h="60px" bgColor="#E20074" align="center">
       <Link href="/">
-        <Image src="ht-logo.png" w="34px" ml="30px" />
+        <Image src="ht-logo.png" alt="HT" w="26px" ml="26px" />
       </Link>
     </Flex>
   );

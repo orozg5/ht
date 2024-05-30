@@ -5,10 +5,9 @@ import IOrder from "./IOrder";
 import IShipment from "./IShipment";
 
 export default interface IShipmentProps {
-  key: string;
   flag: boolean;
-  status: string[],
-  carriers: ICarrier[],
+  status: { [key: string]: string };
+  carriers: ICarrier[];
   aShipment: IShipment;
   aCustomer: ICustomer;
   anAddressFrom: IAddress;

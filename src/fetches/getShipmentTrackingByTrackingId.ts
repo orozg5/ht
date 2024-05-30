@@ -7,10 +7,9 @@ const getShipmentTrackingByTrackingId = async (id: string) => {
         "Content-Type": "application/json",
       },
     });
-
     return response;
   } catch (error) {
-    throw error;
+    return { status: "404", data: "" };
   }
 };
 

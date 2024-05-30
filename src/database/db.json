@@ -1,15 +1,15 @@
 {
   "enums": {
-    "status": [
-      "initialized",
-      "inProcess",
-      "processed",
-      "shipped",
-      "inCustoms",
-      "delivered",
-      "returned",
-      "error"
-    ]
+    "status": {
+      "initialized": "Inicijalizirano",
+      "inProcess": "U tijeku",
+      "processed": "Obrađeno",
+      "shipped": "Poslano",
+      "inCustoms": "Na carini",
+      "delivered": "Isporučeno",
+      "returned": "Vraćeno",
+      "error": "Greška"
+    }
   },
   "carrier": [
     {
@@ -85,13 +85,13 @@
       "trackingCode": "HR8063943801",
       "carrierTrackingUrl": "https://posiljka.posta.hr/",
       "trackingDate": "5/23/2024, 7:30:23 PM",
-      "statusChangeDate": "5/23/2024, 7:30:23 PM",
+      "statusChangeDate": "5/30/2024, 2:38:52 PM",
       "createDate": "5/23/2024, 7:30:23 PM"
     },
     {
       "id": "9a96c500-86e8-4e2c-b1f1-369d384fbb94",
-      "status": "initialized",
-      "statusChangeReason": "Naručeno",
+      "status": "inProcess",
+      "statusChangeReason": "Obrada",
       "carrier": "98722511-e716-4772-aae2-76d537bca41a",
       "weight": 0.2,
       "estimatedDeliveryDate": "2024-06-09T19:44",

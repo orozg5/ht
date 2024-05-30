@@ -1,29 +1,25 @@
 import Shipment from "../components/features/Shipment";
 import { GetServerSideProps } from "next";
-import getEnums from "@/helpers/getEnums";
-import getCarriers from "@/helpers/getCarriers";
+import getEnums from "@/fetches/getEnums";
+import getCarriers from "@/fetches/getCarriers";
 import IProps from "@/interfaces/IProps";
 import { useEffect, useState } from "react";
 import IShipment from "@/interfaces/IShipment";
-import getShipmentTrackingByTrackingId from "@/helpers/getShipmentTrackingByTrackingId";
+import getShipmentTrackingByTrackingId from "@/fetches/getShipmentTrackingByTrackingId";
 
 export default function UpdateShipment({ status, carriers }: IProps) {
   const [shipment, setShipment] = useState<IShipment>({});
 
   useEffect(() => {
     const fetchShipmentTracking = async () => {
-      try {
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get("id");
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
 
-        if (id) {
-          const res = await getShipmentTrackingByTrackingId(id);
-          if (res.status === 200) {
-            setShipment(res.data);
-          }
+      if (id) {
+        const res = await getShipmentTrackingByTrackingId(id);
+        if (res.status === 200) {
+          setShipment(res.data);
         }
-      } catch (error) {
-        throw error;
       }
     };
 
@@ -44,6 +40,7 @@ export default function UpdateShipment({ status, carriers }: IProps) {
     />
   );
 }
+
 export const getServerSideProps: GetServerSideProps<IProps> = async () => {
   const enums = await getEnums();
   const { status } = enums;

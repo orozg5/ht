@@ -10,7 +10,6 @@ const getShipmentTracking = async (id: string) => {
         },
       }
     );
-
     return response;
   } catch (error) {
     throw error;

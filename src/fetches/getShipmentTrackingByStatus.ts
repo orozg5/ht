@@ -7,7 +7,6 @@ const getShipmentTrackingByStatus = async (status: string) => {
         "Content-Type": "application/json",
       },
     });
-
     return response;
   } catch (error) {
     throw error;

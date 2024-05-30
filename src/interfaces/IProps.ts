@@ -1,6 +1,6 @@
 import ICarrier from "./ICarrier";
 
 export default interface IProps {
-  status: string[];
+  status: { [key: string]: string };
   carriers: ICarrier[];
 }
